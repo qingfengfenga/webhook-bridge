@@ -41,3 +41,9 @@
 ## LICENSE
 
 MIT
+
+## 容器里使用报错
+
+fork/exec gitcommand no such file or directory问题
+
+python脚本的头文件 在docker里不存在，使用 which python3 命令查看在docker中python的位置，修改头文件即可

@@ -24,8 +24,27 @@ def send_msg_feishu_md(url, text):
                 {
                     "tag": "markdown",
                     "content": text,
+                },
+                {
+                    "tag": "hr"
+                },
+                {
+                    "elements": [
+                        {
+                          "content": "Automatic push from gitlab robot",
+                          "tag": "lark_md"
+                        }
+                      ],
+                      "tag": "note"
                 }
-            ]
+            ],
+             "header": {
+                "template": "blue",
+                "title": {
+                  "content": "Gitlab notification ",
+                  "tag": "plain_text"
+                }
+              }
         }
     }
     try:

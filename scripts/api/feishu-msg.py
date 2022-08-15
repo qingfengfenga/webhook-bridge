@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/local/bin/python3
 
 import os, sys
 from modules.common import *
@@ -8,6 +8,7 @@ if __name__ == "__main__":
     METHOD_GET_redirect_www("feishu-msg.html")
 
     hook_url = get_param_value("hook_url", required=True)
+
     msg_type = get_param_value("msg_type", required=True)
     payload = get_payload()
 

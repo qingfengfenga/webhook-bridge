@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+
+  wb:
+    image: registry.ds.digitwin.com.cn:5000/library/wb:2022-08-10-09ad228
+    restart: always
+    container_name: wb
+    networks:
+      - proxy
+    #    ports:
+    #      - 8085:80
+    build:
+      context: .
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.wb.entrypoints=http"
+      - "traefik.http.routers.wb.rule=Host(`wb.ds.digitwin.com.cn`)"
+      - "traefik.http.routers.wb.middlewares=https-redirect@file"
+      - "traefik.http.routers.wb-secure.entrypoints=https"
+      - "traefik.http.routers.wb-secure.rule=Host(`wb.ds.digitwin.com.cn`)"
+      - "traefik.http.routers.wb-secure.tls=true"
+      - "traefik.http.routers.wb-secure.tls.certresolver=http"
+      # - "traefik.http.routers.wb-secure.service="
+      # - "traefik.docker.network=proxy"
+networks:
+  proxy:
+    external: false
+    name: proxy
